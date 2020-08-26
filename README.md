@@ -40,7 +40,7 @@ Finally, copy and paste the example App.js included in the module. You should no
 
 #### Configurations
 #
-There are a lot of settings that you can configure the Button with. To set the settings, call configureSettings. As of version 0.0.1, all parameters must be defined when this function is called.
+There are a lot of settings that you can configure the Button with. To set the settings, pass them through as properties. If you wish to change them after init, call configureSettings. As of version 0.0.1, all parameters must be defined when this function is called.
 ```js
 configureSettings(
     disableCameraPhotos,
@@ -53,6 +53,7 @@ configureSettings(
     filesLabel,
 );
 ```
+Showing the action popup aside from pressing the button can be done by calling ```showActionPopup()```.
 
 Here is a list of settings and their descriptions.
 
