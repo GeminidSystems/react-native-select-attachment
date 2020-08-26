@@ -17,7 +17,7 @@ class SelectAttachment : RCTEventEmitter {
   var disableCameraVideos = false
   var disablePhotos = false
   var disableVideos = false
-  var disableDocuments = false
+  var disableFiles = false
   var cameraLabel = "Camera"
   var albumLabel = "Album"
   var filesLabel = "Files"
@@ -37,15 +37,15 @@ class SelectAttachment : RCTEventEmitter {
     return ["onReceivedAttachment"]
   }
 
-  @objc(configureSettings:fileTypes:disableCameraPhotos:disableCameraVideos:disablePhotos:disableVideos:disableDocuments:cameraLabel:albumLabel:filesLabel:)
-  func configureSettings(maxFileSize: NSNumber, fileTypes: NSArray, disableCameraPhotos: Bool, disableCameraVideos: Bool, disablePhotos: Bool, disableVideos: Bool, disableDocuments: Bool, cameraLabel: NSString, albumLabel: NSString, filesLabel: NSString) {
+  @objc(configureSettings:fileTypes:disableCameraPhotos:disableCameraVideos:disablePhotos:disableVideos:disableFiles:cameraLabel:albumLabel:filesLabel:)
+  func configureSettings(maxFileSize: NSNumber, fileTypes: NSArray, disableCameraPhotos: Bool, disableCameraVideos: Bool, disablePhotos: Bool, disableVideos: Bool, disableFiles: Bool, cameraLabel: NSString, albumLabel: NSString, filesLabel: NSString) {
     self.maxFileSize = Int(truncating: maxFileSize)
     self.fileTypes = fileTypes as? [NSString]
     self.disableCameraPhotos = disableCameraPhotos
     self.disableCameraVideos = disableCameraVideos
     self.disablePhotos = disablePhotos
     self.disableVideos = disableVideos
-    self.disableDocuments = disableDocuments
+    self.disableFiles = disableFiles
   }
   
   @objc
@@ -68,7 +68,7 @@ class SelectAttachment : RCTEventEmitter {
           self.showImagePickerController(type: .photoLibrary)
         })
       }
-      if (!self.disableDocuments) {
+      if (!self.disableFiles) {
         alertController.addAction(UIAlertAction(title: "Files", style: .default) { UIAlertActiion in
              self.showDocumentPickerController()
            })
