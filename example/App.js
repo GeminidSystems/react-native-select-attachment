@@ -22,6 +22,19 @@ export default class SelectAttachment extends Component {
     console.log('Attach Files Component Init');
   }
 
+  onReceivedAttachment(res) {
+    if (res.error != null) {
+      console.log('error', res.error);
+    } else {
+      console.log('source', res.source);
+      if (!(res.source === 'cameraPhoto')) {
+        console.log('fileName', res.fileName);
+        console.log('fileType', res.fileType);
+        //console.log('base64', res.base64);
+      }
+    }
+  }
+
   componentDidMount() {
     console.log('Attach Files Component Mounted');
   }
@@ -30,7 +43,12 @@ export default class SelectAttachment extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.text}> Attach a File: </Text>
-        <SelectAttachmentButton style={styles.item} width={150} height={60} />
+        <SelectAttachmentButton
+          style={styles.item}
+          width={150}
+          height={60}
+          onReceivedAttachment={this.onReceivedAttachment}
+        />
       </View>
     );
   }
