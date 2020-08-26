@@ -26,7 +26,7 @@
     "react native",
     "select-document",
     "select-photo",
-    "select-image-picker"
+    "select-image-picker",
     "react-native-select-attachment",
     "react-native-select-attachment-button"
   ],
@@ -41,5 +41,9 @@
   "dependencies": {
     "react": "^16.13.1",
     "react-native": "^0.63.2"
+  },
+  "directories": {
+    "example": "example",
+    "lib": "lib"
   }
 }
