@@ -1,0 +1,43 @@
+{
+  "name": "react-native-select-attachment",
+  "version": "0.0.1",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "author": "Karl Gunst <karl.gunst@geminidsystems.com> (https://github.com/GeminidSystems)",
+  "description": "QuickLook support for react-native applications",
+  "homepage": "https://github.com/GeminidSystems/react-native-select-attachment",
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "prop-types": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeminidSystems/react-native-select-attachment.git"
+  },
+  "keywords": [
+    "react-native",
+    "react native",
+    "quicklook",
+    "react-native-quicklook",
+    "react-native-quicklook-view"
+  ],
+  "files": [
+    "ios/",
+    "lib/",
+    "react-native-select-attachment.podspec"
+  ],
+  "bugs": {
+    "url": "https://github.com/GeminidSystems/react-native-select-attachment/issues"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-native": "^0.63.2"
+  }
+}
