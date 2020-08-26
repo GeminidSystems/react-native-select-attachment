@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "license": "ISC",
   "main": "lib/index.js",
-  "author": "Karl Gunst <karl.gunst@geminidsystems.com> (https://github.com/GeminidSystems)",
-  "description": "QuickLook support for react-native applications",
+  "author": "Geoffrey Xue <xuegeoff@gmail.com> (https://github.com/GeminidSystems)",
+  "description": "Select Cameras, Photos, and Files for react-native applications",
   "homepage": "https://github.com/GeminidSystems/react-native-select-attachment",
   "scripts": {
     "android": "react-native run-android",
@@ -24,9 +24,11 @@
   "keywords": [
     "react-native",
     "react native",
-    "quicklook",
-    "react-native-quicklook",
-    "react-native-quicklook-view"
+    "select-document",
+    "select-photo",
+    "select-image-picker"
+    "react-native-select-attachment",
+    "react-native-select-attachment-button"
   ],
   "files": [
     "ios/",
