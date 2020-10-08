@@ -10,7 +10,7 @@
 
 `react-native-select-attachment` allows the selection of photos, videos, or other files (local or cloud storage like Google Drive, Dropbox, Box). The `fileName`, `fileType`, and `base64` file data are returned to react-native. This is useful if you want to display or store file data from the device into your application.
 
-
+![preview](https://geminid.s3-us-west-1.amazonaws.com/img/react-native-select-attachment.png)
 
 
 ## Getting Started
