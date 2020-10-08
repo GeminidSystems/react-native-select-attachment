@@ -1,9 +1,3 @@
-//
-//  AttachFileManager.m
-//
-//
-//  Created by Geoffrey Xue on 8/17/20.
-//
 
 #import "react-native-select-attachment-Bridging-Header.h"
 

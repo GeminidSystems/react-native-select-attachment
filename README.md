@@ -1,24 +1,33 @@
-# Selecting Attachments for React Native - IOS
-## Release 0.0.1
-#### react-native-select-attachment
-#
 
-This React-Native module will allow your app to select images, videos from your photo gallery, take photos/videos directly, or import files from your phone, including Google Drive and Dropbox. These will be returned as Base64 strings along with some other identifiers.
+#  `react-native-select-attachment`
 
-### Module Function
-Attachments selected will return the base64 encoded string. Other than the photo taken by the camera, all other files will have a source, fileName, and fileType alongside the base64. 
+## Supported Versions
+| react-native-select-attachment | react-native |
+| --- | --- |
+| >= 0.0.1 | 0.60+
 
-#### Getting Started
-#
-Install the module using npm in your app directory, and then do a pod install afterwards in the ios folder.
+## Description
+
+`react-native-select-attachment` allows the selection of photos, videos, or other files (local or cloud storage like Google Drive, Dropbox, Box). The `fileName`, `fileType`, and `base64` file data are returned to react-native. This is useful if you want to display or store file data from the device into your application.
+
+
+
+
+## Getting Started
+
+`$ npm install react-native-select-attachment --save`
+
+#### Android
+Not supported in the current release, check back for future releases or create a PR
+
+#### iOS
+CocoaPods on iOS needs this extra step
+
 ```
-npm install react-native-select-attachment
+npx pod-install
 ```
-```
-cd ios
-pod install
-```
-To use the react-module, you'll first have to write some privacy descriptions for accessing the photo library and the camera. Open your Info.plist as source and copy these three privacy descriptions in.
+
+To use the react-module, you'll first have to write some privacy descriptions for accessing the photo library and the camera. Open your `Info.plist` as source and populate the usage descriptions as shown below:
 ``` xml
 <key>NSMicrophoneUsageDescription</key>
 <string>For people to hear you during meetings, we need access to your microphone.</string>
@@ -27,69 +36,152 @@ To use the react-module, you'll first have to write some privacy descriptions fo
 <key>NSPhotoLibraryUsageDescription</key>
 <string>This app wants to use your photos.</string>
 ```
-
+## Usage
 To import into your react app, import the SelectAttachmentButton component.
 ```javascript
-import SelectAttachmentButton from 'react-native-select-attachment';
+import SelectAttachment from 'react-native-select-attachment';
+```
+And call `showPicker` as shown below:
+```javascript
+var options = {
+    maxFileSize: 10,
+    fileTypes: ['png', 'jpg', 'pdf'],
+    disableCameraPhotos: false,
+    disableCameraVideos: false,
+    disablePhotos: false,
+    disableVideos: false,
+    disableFiles: false,
+    cameraLabel: 'Camera',
+    albumLabel: 'Album',
+    filesLabel: 'Files',
+    enableImageScaling : true,
+    imageScale : 0.90,
+    maxImageWidth : 950
+};
+
+SelectAttachment.showPicker(options, (res) => {
+    if(res.error){
+        console.error(res.error);
+    } else {
+        console.error(res.fileName);
+        console.error(res.fileType);
+        console.error(res.base64);
+    }
+});
 ```
 
-Finally, copy and paste the example App.js included in the module. You should now be able to see a "Select a file" text. Once you click on it, you'll be able to see the popup. Selecting an attachment (Other than a photo taken from the camera) will give your the source, fileType, and fileName (Commented out is the base64 string, which will be very long) in your console.
-![actions](https://i.ibb.co/bPh0Vwn/IMG-0014.png)
-![files](https://i.ibb.co/bss573n/IMG-0015.png)
-![console](https://i.ibb.co/ww5gSsL/Screen-Shot-2020-08-26-at-6-06-13-PM.png)
 
-#### Configurations
-#
-There are a lot of settings that you can configure the Button with. To set the settings, pass them through as properties. If you wish to change them after init, call configureSettings. As of version 0.0.1, all parameters must be defined when this function is called.
-```js
-configureSettings(
-    disableCameraPhotos,
-    disableCameraVideos,
-    disablePhotos,
-    disableVideos,
-    disableFiles,
-    cameraLabel,
-    albumLabel,
-    filesLabel,
-);
-```
-Showing the action popup aside from pressing the button can be done by calling ```showActionPopup()```.
 
-Here is a list of settings and their descriptions.
 
-```js
-activeOpacity: PropTypes.number,        // Opacity of Attachment button when selected
 
-disableCameraPhotos: PropTypes.bool,    // Disable choosing pictures in "Camera"
-disableCameraVideos: PropTypes.bool,    // Disable choosing videos in "Camera"
-disablePhotos: PropTypes.bool,          // Disable choosing pictures in "Photo Gallery/Album"
-disableVideos: PropTypes.bool,          // Disable choosing videos in "Photo Gallery/Album"
-disableFiles: PropTypes.bool,           // Disable "Files" option
-cameraLabel: PropTypes.string,          // Custom labeling for "Camera" option
-albumLabel: PropTypes.string,           // Custom labeling for "Photo Gallery/Album" option
-filesLabel: PropTypes.string,           // Custom labeling for "Files" option
+# Reference
 
-onReceivedAttachment: PropTypes.func,   // Called when the the user selects an attachment
-```
-##### Things to Note
-- If onReceivedAttachment is not implemented, a warning in console will appear. 
-- If photos and videos are disabled for either Camera or the Photo Gallery, the option will be removed entirely  from the options.
+## Options
 
-These are the defaults for some of the above properties:
-```js
-disableCameraPhotos: false,
-disableCameraVideos: false,
-disablePhotos: false,
-disableVideos: false,
-disableFiles: false,
-cameraLabel: 'Camera',
-albumLabel: 'Album',
-filesLabel: 'Files',
-```
+### `maxFileSize`
 
-To be implemented:
-```js
-maxFileSize: PropTypes.number,      // Maximum file size of any attachment
-documentTypes: PropTypes.array,     // Document types accepted for "Files" option
-```
+The max file size allowed of the selected file (in MB)
 
+| Type     | Required | Default |
+| -------- | -------- | ----- |
+| [String] | No       | null |
+
+---
+
+### `fileTypes`
+
+The file types that will be allowed for selection (in Files). If left blank all file types are allowed for selection
+
+Supported options are:
+- png
+- pdf
+- jpg
+- csv
+
+
+| Type     | Required | Default |
+| -------- | -------- | ----- |
+| [String] | No       | ['all'] |
+
+---
+
+### `disablePhotos`
+
+Disables the `Camera` from the popup options
+
+| Type     | Required | Default |
+| -------- | -------- | -------- |
+| Boolean | No       | false |
+
+---
+
+### `disableFiles`
+
+Disables the `Files` from the popup options
+
+| Type     | Required | Default |
+| -------- | -------- | -------- |
+| Boolean | No       | false |
+
+---
+
+### `cameraLabel`
+
+Overrides the label for `Camera` popup
+
+| Type     | Required | Default |
+| -------- | -------- | -------- |
+| String | No       | 'Camera' |
+
+---
+
+
+### `albumLabel`
+
+Overrides the label for `Album` popup
+
+| Type     | Required | Default |
+| -------- | -------- | -------- |
+| String | No       | 'Album' |
+
+---
+
+### `filesLabel`
+
+Overrides the label for `Files` popup
+
+| Type     | Required | Default |
+| -------- | -------- | -------- |
+| String | No       | 'Files' |
+
+---
+
+### `enableImageScaling`
+
+Allows scaling images to reduce file size.
+
+| Type     | Required | Default |
+| -------- | -------- | -------- |
+| Boolean | No       | false |
+
+---
+
+### `imageScale`
+
+If `enableImageScaling` is true, the image resolution is reduced by a percentage entered. Example 0.5 would reduce the resolution by 50%
+
+| Type     | Required | Default |
+| -------- | -------- | -------- |
+| Decimal | No       | 1.0 |
+
+---
+
+### `maxImageWidth`
+
+The max width of the image in pixels. Images will be scaled to the entered value. This is useful to reduce file size.
+
+| Type     | Required | Default |
+| -------- | -------- | -------- |
+| Integer | No       | 950 |
+
+---
