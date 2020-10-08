@@ -12,7 +12,7 @@ export default class ExampleApp extends Component {
 
         var options = {
             maxFileSize: 10,
-            fileTypes: ['png', 'jpg'],
+            fileTypes: ['png', 'jpg', 'pdf'],
             disableCameraPhotos: false,
             disableCameraVideos: false,
             disablePhotos: false,
@@ -20,7 +20,10 @@ export default class ExampleApp extends Component {
             disableFiles: false,
             cameraLabel: 'Camera',
             albumLabel: 'Album',
-            filesLabel: 'Files'
+            filesLabel: 'Files',
+            enableImageScaling : true,
+            imageScale : 0.90,
+            maxImageWidth : 950
         };
 
         SelectAttachment.showPicker(options, (res) => {
