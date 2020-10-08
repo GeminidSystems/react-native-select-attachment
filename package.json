@@ -1,6 +1,6 @@
 {
   "name": "react-native-select-attachment",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "ISC",
   "main": "lib/index.js",
   "author": "Geoffrey Xue <xuegeoff@gmail.com> (https://github.com/GeminidSystems)",
