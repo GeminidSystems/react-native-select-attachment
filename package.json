@@ -1,6 +1,6 @@
 {
   "name": "react-native-select-attachment",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "ISC",
   "main": "lib/index.js",
   "author": "Geoffrey Xue <xuegeoff@gmail.com> (https://github.com/GeminidSystems)",
@@ -38,10 +38,11 @@
   "bugs": {
     "url": "https://github.com/GeminidSystems/react-native-select-attachment/issues"
   },
-  "dependencies": {
-    "react": "^16.13.1",
-    "react-native": "^0.63.2"
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
   },
+  "dependencies": {},
   "directories": {
     "example": "example",
     "lib": "lib"
